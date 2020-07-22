@@ -18,9 +18,9 @@ width = 800
 screen = pygame.display.set_mode((width, height))
 
 # load the image
-carimg = pygame.image.load("car7.jpg")
+carimg = pygame.image.load("car7.jpg").convert_alpha()
 car_width = 56
-intro_image = pygame.image.load("background.jpg")
+intro_image = pygame.image.load("background.jpg").convert
 
 # strip = pygame.image.load("yellowstrip.png")
 
@@ -78,11 +78,11 @@ if __name__ == '__main__':
     backgr = pygame.image.load("background_new.png")
 
 
-    strip1 = pygame.image.load("yellowstrip.png")
-    strip2 = pygame.image.load("yellowstrip.png")
-    strip3 = pygame.image.load("yellowstrip.png")
-    strip4 = pygame.image.load("yellowstrip.png")
-    strip5 = pygame.image.load("yellowstrip.png")
+    strip1 = pygame.image.load("yellowstrip.png").convert_alpha()
+    strip2 = pygame.image.load("yellowstrip.png").convert_alpha()
+    strip3 = pygame.image.load("yellowstrip.png").convert_alpha()
+    strip4 = pygame.image.load("yellowstrip.png").convert_alpha()
+    strip5 = pygame.image.load("yellowstrip.png").convert_alpha()
     strip1_y = -150
     strip2_y = 0
     strip3_y = 150
@@ -96,8 +96,8 @@ if __name__ == '__main__':
     grass2_x = 650
     grass_y_change = 10
 
-    grass1 = pygame.image.load("side_grass150.jpg")
-    grass2 = pygame.image.load("side_grass150.jpg")
+    grass1 = pygame.image.load("side_grass150.jpg").convert_alpha()
+    grass2 = pygame.image.load("side_grass150.jpg").convert_alpha()
 
 
     def strip():
@@ -139,17 +139,17 @@ if __name__ == '__main__':
     # obstacle func
     def obstacle(obs_x, obs_y, obs):
         if obs == 0:
-            obs_pic = pygame.image.load("car1-01.jpeg")
+            obs_pic = pygame.image.load("car1-01.jpeg").convert_alpha()
         elif obs == 1:
-            obs_pic = pygame.image.load("car2-01.jpeg")
+            obs_pic = pygame.image.load("car2-01.jpeg").convert_alpha()
         elif obs == 2:
-            obs_pic = pygame.image.load("car4-01.jpeg")
+            obs_pic = pygame.image.load("car4-01.jpeg").convert_alpha()
         elif obs == 3:
-            obs_pic = pygame.image.load("car5-01.jpeg")
+            obs_pic = pygame.image.load("car5-01.jpeg").convert_alpha()
         elif obs == 4:
-            obs_pic = pygame.image.load("car6-01.jpeg")
+            obs_pic = pygame.image.load("car6-01.jpeg").convert_alpha()
         elif obs == 5:
-            obs_pic = pygame.image.load("car7.jpg")
+            obs_pic = pygame.image.load("car7.jpg").convert_alpha()
         screen.blit(obs_pic, (round(obs_x), round(obs_y)))
 
 
