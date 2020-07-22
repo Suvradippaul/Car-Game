@@ -1,2 +1,4 @@
-# Car-Game
-This is a Car Game in python 3 using Pygame.
+Car Game
+===============
+
+A 2D Car Game made using [python-pygame][pygame]
