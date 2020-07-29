@@ -16,3 +16,5 @@ go beyond the road line to avoid crashing.
 Pass each car to score one point.
 
 **TEN** points will lead to next level of game.
+
+Know more about *Pygame* library [here](https://www.pygame.org/docs/)
