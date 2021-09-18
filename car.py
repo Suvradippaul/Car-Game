@@ -3,6 +3,7 @@ import pygame
 pygame.init()
 import time
 import random
+import sys
 
 # colour values
 green = (0, 200, 0)
@@ -20,7 +21,7 @@ screen = pygame.display.set_mode((width, height))
 # load the image
 carimg = pygame.image.load("car7.jpg").convert_alpha()
 car_width = 56
-intro_image = pygame.image.load("background.jpg").convert
+intro_image = pygame.image.load("background.jpg").convert()
 
 # strip = pygame.image.load("yellowstrip.png")
 
@@ -37,8 +38,9 @@ if __name__ == '__main__':
         while intro:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
+                    intro = false
                     pygame.quit()
-                    quit()
+                    sys.quit()
 
             screen.blit(intro_image, (0, 0))
 
@@ -238,6 +240,7 @@ if __name__ == '__main__':
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     bumped = True
+                    sys.exit()
 
                 # moving in x-y cordinates
                 if event.type == pygame.KEYDOWN:
@@ -328,5 +331,5 @@ if __name__ == '__main__':
     intro_loop()
     gameloop()
     pygame.quit()
-    quit()
+    sys.quit()
 
