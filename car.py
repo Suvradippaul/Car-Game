@@ -1,9 +1,17 @@
 import pygame
-
-pygame.init()
 import time
 import random
 import sys
+import os
+
+pygame.init()
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 # colour values
 green = (0, 200, 0)
@@ -12,16 +20,19 @@ blue = (0, 0, 200)
 white = (255,255,255)
 instruct_colour = (0, 0, 102)
 instruct_colour2 = (0, 0, 153)
-background_sound = pygame.mixer.music.load("Back in Black.mp3")
+asset_bg_sound = resource_path('Assets/Audios/Back in Black.mp3')
+background_sound = pygame.mixer.music.load(asset_bg_sound)
 pygame.mixer.music.play(-1)
 height = 600
 width = 800
 screen = pygame.display.set_mode((width, height))
 
 # load the image
-carimg = pygame.image.load("car7.jpg").convert_alpha()
+asset_carimg = resource_path('Assets/Images/car7.jpg')
+carimg = pygame.image.load(asset_carimg).convert_alpha()
 car_width = 56
-intro_image = pygame.image.load("background.jpg").convert()
+asset_intro_image = resource_path('Assets/Images/background.jpg')
+intro_image = pygame.image.load(asset_intro_image).convert()
 
 # strip = pygame.image.load("yellowstrip.png")
 
@@ -44,7 +55,8 @@ if __name__ == '__main__':
 
             screen.blit(intro_image, (0, 0))
 
-            font = pygame.font.Font('SnesItalic-vmAPZ.ttf', 150)
+            asset_font = resource_path('Assets/Fonts/SnesItalic-vmAPZ.ttf')
+            font = pygame.font.Font(asset_font, 150)
             title = font.render("CAR GAME", True, (0, 0, 0))
             screen.blit(title, (198, 50))
 
@@ -66,25 +78,26 @@ if __name__ == '__main__':
 
             else:
                 pygame.draw.rect(screen, red, (550, 500, 150, 50))
-
-            font1 = pygame.font.Font('JustMyType-KePl.ttf', 30)
+            asset_font1 = resource_path('Assets/Fonts/JustMyType-KePl.ttf')
+            font1 = pygame.font.Font(asset_font1, 30)
             title = font1.render("PLAY GAME", True, (255, 255, 255))
             screen.blit(title, (100, 511))
-            font2 = pygame.font.Font('JustMyType-KePl.ttf', 33)
+            font2 = pygame.font.Font(asset_font1, 33)
             title = font2.render("QUIT", True, (255, 255, 255))
             screen.blit(title, (599, 508))
             pygame.display.update()
 
 
     # load all the images
-    backgr = pygame.image.load("background_new.png")
+    asset_backgr = resource_path('Assets/Images/background_new.png')
+    backgr = pygame.image.load(asset_backgr)
 
-
-    strip1 = pygame.image.load("yellowstrip.png").convert_alpha()
-    strip2 = pygame.image.load("yellowstrip.png").convert_alpha()
-    strip3 = pygame.image.load("yellowstrip.png").convert_alpha()
-    strip4 = pygame.image.load("yellowstrip.png").convert_alpha()
-    strip5 = pygame.image.load("yellowstrip.png").convert_alpha()
+    asset_strip = resource_path('Assets/Images/yellowstrip.png')
+    strip1 = pygame.image.load(asset_strip).convert_alpha()
+    strip2 = pygame.image.load(asset_strip).convert_alpha()
+    strip3 = pygame.image.load(asset_strip).convert_alpha()
+    strip4 = pygame.image.load(asset_strip).convert_alpha()
+    strip5 = pygame.image.load(asset_strip).convert_alpha()
     strip1_y = -150
     strip2_y = 0
     strip3_y = 150
@@ -98,8 +111,9 @@ if __name__ == '__main__':
     grass2_x = 650
     grass_y_change = 10
 
-    grass1 = pygame.image.load("side_grass150.jpg").convert_alpha()
-    grass2 = pygame.image.load("side_grass150.jpg").convert_alpha()
+    asset_grass = resource_path('Assets/Images/side_grass150.jpg')
+    grass1 = pygame.image.load(asset_grass).convert_alpha()
+    grass2 = pygame.image.load(asset_grass).convert_alpha()
 
 
     def strip():
@@ -140,24 +154,33 @@ if __name__ == '__main__':
 
     # obstacle func
     def obstacle(obs_x, obs_y, obs):
+
+        asset_obs1 = resource_path('Assets/Images/car1-01.jpeg')
+        asset_obs2 = resource_path('Assets/Images/car2-01.jpeg')
+        asset_obs3 = resource_path('Assets/Images/car4-01.jpeg')
+        asset_obs4 = resource_path('Assets/Images/car5-01.jpeg')
+        asset_obs5 = resource_path('Assets/Images/car6-01.jpeg')
+        asset_obs6 = resource_path('Assets/Images/car7.jpg')
+        
         if obs == 0:
-            obs_pic = pygame.image.load("car1-01.jpeg").convert_alpha()
+            obs_pic = pygame.image.load(asset_obs1).convert_alpha()
         elif obs == 1:
-            obs_pic = pygame.image.load("car2-01.jpeg").convert_alpha()
+            obs_pic = pygame.image.load(asset_obs2).convert_alpha()
         elif obs == 2:
-            obs_pic = pygame.image.load("car4-01.jpeg").convert_alpha()
+            obs_pic = pygame.image.load(asset_obs3).convert_alpha()
         elif obs == 3:
-            obs_pic = pygame.image.load("car5-01.jpeg").convert_alpha()
+            obs_pic = pygame.image.load(asset_obs4).convert_alpha()
         elif obs == 4:
-            obs_pic = pygame.image.load("car6-01.jpeg").convert_alpha()
+            obs_pic = pygame.image.load(asset_obs5).convert_alpha()
         elif obs == 5:
-            obs_pic = pygame.image.load("car7.jpg").convert_alpha()
+            obs_pic = pygame.image.load(asset_obs6).convert_alpha()
         screen.blit(obs_pic, (round(obs_x), round(obs_y)))
 
 
 
     def score_card(car_passed, score):
-        font = pygame.font.Font('JustMyType-KePl.ttf', 35)
+        asset_font = resource_path('Assets/Fonts/JustMyType-KePl.ttf')
+        font = pygame.font.Font(asset_font, 35)
         passed = font.render("Passed  " + str(car_passed), True, (255, 255, 255))
         score = font.render("Score  " + str(score), True, (255, 255, 255))
         screen.blit(passed, (0, 50))
@@ -165,10 +188,11 @@ if __name__ == '__main__':
 
     def countdown():
         countdown = True
+        asset_font = resource_path('Assets/Fonts/Squirk-RMvV.ttf')
         while countdown:
             clock.tick(1)
             screen.blit(backgr, (0,0))
-            font = pygame.font.Font('Squirk-RMvV.ttf', 100)
+            font = pygame.font.Font(asset_font, 100)
             text = font.render("3", True, white)
             text_rect = text.get_rect(center=(int(width / 2), int(height / 2)))
             screen.blit(text, text_rect)
@@ -176,7 +200,7 @@ if __name__ == '__main__':
 
             clock.tick(1)
             screen.blit(backgr, (0, 0))
-            font = pygame.font.Font('Squirk-RMvV.ttf', 150)
+            font = pygame.font.Font(asset_font, 150)
             text = font.render("2", True, white)
             text_rect = text.get_rect(center=(int(width / 2), int(height / 2)))
             screen.blit(text, text_rect)
@@ -184,7 +208,8 @@ if __name__ == '__main__':
 
             clock.tick(1)
             screen.blit(backgr, (0, 0))
-            font = pygame.font.Font('Squirk-RMvV.ttf', 200)
+            asset_font = resource_path('Assets/Fonts/Squirk-RMvV.ttf')
+            font = pygame.font.Font(asset_font, 200)
             text = font.render("1", True, white)
             text_rect = text.get_rect(center=(int(width / 2), int(height / 2)))
             screen.blit(text, text_rect)
@@ -192,7 +217,7 @@ if __name__ == '__main__':
 
             clock.tick(1)
             screen.blit(backgr, (0, 0))
-            font = pygame.font.Font('Squirk-RMvV.ttf', 250)
+            font = pygame.font.Font(asset_font, 250)
             text = font.render("GO", True, white)
             text_rect = text.get_rect(center=(int(width / 2), int(height / 2)))
             screen.blit(text, text_rect)
